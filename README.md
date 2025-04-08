@@ -5,7 +5,8 @@ This is a cute and interactive HTML/CSS-only project where a lovable robot asks:
 
 Built with creative CSS and animated flair, this little project is perfect for a playful confession or just to charm someone with your front-end skills!
 
-![Screenshot](./Screenshot%202025-04-08%20024801.png)
+![Screenshot 2025-04-08 024801](https://github.com/user-attachments/assets/797ef76d-4168-419c-8337-e7d5579f0716)
+
 
 ## 🧠 Features
 
