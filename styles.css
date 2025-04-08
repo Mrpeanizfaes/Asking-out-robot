@@ -1,0 +1,379 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.text-container {
+  font-family: "Game Bubble", sans-serif;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 30px;
+  background-color: #e8e8e8;
+  letter-spacing: 5px;
+  color: #e69db8;
+}
+
+.btn-wrap {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 60px;
+  display: flex;
+  z-index: 100;
+}
+
+.btn-wrap button {
+  font-family: "Game Bubble", sans-serif;
+  font-size: 25px;
+  color: #fff;
+  background-color: #e69db8;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 20px 40px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 22px -10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 22px -10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 22px -10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-wrap button:hover {
+  transform: scale(1.1);
+}
+
+.btn-wrap button:active {
+  transform: scale(0.95);
+}
+
+.container {
+  --translateZ: 55px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: transparent;
+}
+
+.robot-wrap {
+  --robot-color: #fed2e2;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 410px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.robot-wrap input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.head {
+  --translateY: 10px;
+  width: 100%;
+  height: 65%;
+  background-color: var(--robot-color);
+  border-radius: 120px;
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+  transform: translateY(10px);
+  z-index: 10;
+  cursor: pointer;
+}
+
+.face {
+  width: 90%;
+  height: 90%;
+  border-radius: 100px;
+  transform-style: preserve-3d;
+}
+
+.background-blur {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+}
+
+.colors {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  animation: rotate-background 9s linear infinite;
+}
+
+.background-blur .color {
+  width: 320px;
+  height: 320px;
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(50px);
+}
+
+.background-blur .color.first {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #9ec6f3;
+}
+
+.background-blur .color.second {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #9fb3df;
+}
+
+.background-blur .color.third {
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background-color: #bddde4;
+}
+
+@keyframes rotate-background {
+  from {
+    transform: translateX(-50%) translateY(-50%) rotate(360deg);
+  }
+  to {
+    transform: translateX(-50%) translateY(-50%) rotate(0);
+  }
+}
+
+.eyes {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  height: 105px;
+  transition: all 0.3s ease;
+}
+
+.eye {
+  width: 45px;
+  height: 105px;
+  background-color: #fff;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  animation: eye 9s infinite linear;
+}
+
+.cry {
+  display: none;
+  font-family: "Game Bubble", sans-serif;
+  background-color: transparent;
+  color: #fff;
+  font-size: 130px;
+  font-weight: 1000;
+  margin: 0 20px;
+  transition: all 0.3s ease;
+}
+
+.love {
+  display: none;
+  background-color: transparent;
+  color: #fff;
+  width: 110px;
+  height: 250px;
+  transition: all 0.3s ease;
+  animation: eye 9s infinite linear;
+}
+
+.head:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 42px -10px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 0 42px -10px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 0 42px -10px rgba(0, 0, 0, 0.5);
+}
+
+input:checked ~ .head .eye {
+  display: none;
+}
+
+input:checked ~ .head .love {
+  display: flex;
+}
+
+input:checked ~ .head .eyes {
+  gap: 10px;
+}
+
+@keyframes eye {
+  40%,
+  44%,
+  96%,
+  100% {
+    height: 105px;
+  }
+  42%,
+  98% {
+    height: 25px;
+  }
+}
+
+.body {
+  width: 25%;
+  height: 20%;
+  background-color: var(--robot-color);
+  filter: brightness(0.95);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  z-index: 2;
+  transform: translateY(37px);
+}
+
+.top {
+  gap: 70px;
+  transform: translateY(15px);
+}
+
+.arm {
+  width: 25px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: var(--robot-color);
+  filter: brightness(0.9);
+  z-index: 2;
+}
+
+.leg {
+  width: 35px;
+  height: 25px;
+  border-radius: 30px;
+  background-color: var(--robot-color);
+  filter: brightness(0.9);
+}
+
+.shadow {
+  position: absolute;
+  bottom: 5%;
+  left: 10%;
+  width: 80%;
+  height: 10%;
+  background-color: #000;
+  opacity: 0.3;
+  border-radius: 120px;
+}
+
+.area:nth-child(1):hover ~ .robot-wrap .head,
+.area:nth-child(1):hover ~ .robot-wrap .eye {
+  transform: perspective(800px) rotateX(15deg) rotateY(-15deg)
+    translateZ(var(--translateZ)) translateY(var(--translateY));
+}
+
+.area:nth-child(2):hover ~ .robot-wrap .head,
+.area:nth-child(2):hover ~ .robot-wrap .eye {
+  transform: perspective(800px) rotateX(25deg) rotateY(0deg)
+    translateZ(var(--translateZ)) translateY(var(--translateY));
+}
+
+.area:nth-child(3):hover ~ .robot-wrap .head,
+.area:nth-child(3):hover ~ .robot-wrap .eye {
+  transform: perspective(800px) rotateX(15deg) rotateY(15deg)
+    translateZ(var(--translateZ)) translateY(var(--translateY));
+}
+
+.area:nth-child(4):hover ~ .robot-wrap .head,
+.area:nth-child(4):hover ~ .robot-wrap .eye {
+  transform: perspective(800px) rotateY(-15deg) translateZ(var(--translateZ))
+    translateY(var(--translateY));
+}
+
+.area:nth-child(5):hover ~ .robot-wrap .head,
+.area:nth-child(5):hover ~ .robot-wrap .eye {
+  transform: perspective(800px) rotateX(15deg) rotateY(0deg)
+    translateZ(var(--translateZ)) translateY(var(--translateY));
+}
+
+.area:nth-child(6):hover ~ .robot-wrap .head,
+.area:nth-child(6):hover ~ .robot-wrap .eye {
+  transform: perspective(800px) rotateY(15deg) translateZ(var(--translateZ))
+    translateY(var(--translateY));
+}
+
+.area:nth-child(7):hover ~ .robot-wrap .head,
+.area:nth-child(7):hover ~ .robot-wrap .eye {
+  transform: perspective(800px) rotateX(-15deg) rotateY(-15deg)
+    translateZ(var(--translateZ)) translateY(var(--translateY));
+}
+
+.area:nth-child(9):hover ~ .robot-wrap .head,
+.area:nth-child(9):hover ~ .robot-wrap .eye {
+  transform: perspective(800px) rotateX(-15deg) rotateY(15deg)
+    translateZ(var(--translateZ)) translateY(var(--translateY));
+}
+
+.container:has(+ .btn-wrap button:nth-child(1):hover) .robot-wrap .head,
+.container:has(+ .btn-wrap button:nth-child(1):hover) .robot-wrap .eye {
+  transform: perspective(800px) rotateX(25deg) rotateY(-5deg)
+    translateZ(var(--translateZ)) translateY(var(--translateY));
+}
+
+.container:has(+ .btn-wrap button:nth-child(1):hover) .robot-wrap .eye,
+.container:has(+ .btn-wrap button:nth-child(2):hover) .robot-wrap .eye {
+  display: none;
+  animation-play-state: paused;
+}
+
+.container:has(+ .btn-wrap button:nth-child(1):hover) .robot-wrap .cry,
+.container:has(+ .btn-wrap button:nth-child(2):hover) .robot-wrap .love {
+  display: flex;
+}
+
+.container:has(+ .btn-wrap button:nth-child(1):hover)
+  .robot-wrap
+  .background-blur {
+  filter: brightness(0.8);
+}
+
+.container:has(+ .btn-wrap button:nth-child(2):hover) .robot-wrap .head,
+.container:has(+ .btn-wrap button:nth-child(2):hover) .robot-wrap .eye {
+  transform: perspective(800px) rotateX(25deg) rotateY(5deg)
+    translateZ(var(--translateZ)) translateY(var(--translateY));
+}
+
+.container:has(+ .btn-wrap:hover) .robot-wrap .head,
+.container:has(+ *:hover) .robot-wrap .eye {
+  transform: perspective(800px) rotateX(25deg) rotateY(0deg)
+    translateZ(var(--translateZ)) translateY(var(--translateY));
+}
